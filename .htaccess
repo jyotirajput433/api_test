@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+#Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# maping URL 
+
+	RewriteRule ^api/list/$ RestController.php?page_key=list [nc,qsa]  
+	RewriteRule ^api/list$ RestController.php?page_key=list [nc,qsa]  
+</IfModule>

@@ -1,0 +1,36 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<span id="display"> </span>
+<br>
+<input type="text" id="name" placeholder="enter user name">
+ <button id="ajax"> Click Me</button>
+<script>
+    $('#ajax').click(function(){
+
+        var person_name =  $("#name").val();
+        var person = {name: person_name}
+ 
+        $.ajax({
+            type: "POST",
+            crossDomain: true,
+            cache: false,
+            dataType:"json",
+            data: JSON.stringify(person),
+            contentType:'application/json',
+            url: "http://localhost/api_test/api/list",
+            success: function(data){
+                //console.log(data)
+                $("#display").html(data.output);
+            },
+            error: function(xhr,status,error){
+                console.log(xhr.responseText);
+            }
+
+        });
+
+
+    });
+</script>
+</html>
